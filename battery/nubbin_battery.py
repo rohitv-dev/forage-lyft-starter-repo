@@ -1,5 +1,3 @@
-from datetime import datetime
-from dateutil import relativedelta
 from battery.battery import Battery
 
 class NubbinBattery(Battery):
@@ -7,8 +5,5 @@ class NubbinBattery(Battery):
     super().__init__(current_date, last_service_date)
 
   def needs_service(self):
-    delta = relativedelta.relativedelta(self.current_date, self.last_service_date)
-    if delta.years >= 4:
-      return True
-    else:
-      return False
+    service_date = self.last_service_date.replace(year=self.last_service_date.year + 4)
+    return service_date < self.current_date
