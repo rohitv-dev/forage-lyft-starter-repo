@@ -1,9 +1,8 @@
-from abc import ABC
 from datetime import datetime
 from dateutil import relativedelta
 from battery.battery import Battery
 
-class SpindlerBattery(Battery, ABC):
+class SpindlerBattery(Battery):
   def __init__(self, last_service_date):
     super().__init__(last_service_date)
 
